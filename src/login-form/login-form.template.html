@@ -1,0 +1,16 @@
+<form name="form" ng-submit="submit()" data-abide novalidate>
+    <div ng-if="error" class="alert callout">
+        <p><i class="fa fa-warning"></i><span ng-bind="error"></span></p>
+    </div>
+    <label>Usuario
+        <input name="username" type="text" ng-model="username" required>
+        <span class="form-error">El usuario es requerido</span>
+    </label>
+    <label>Contraseña
+        <input name="password" type="password" ng-model="password" required>
+        <span class="form-error">La contraseña es requerida</span>
+    </label>
+    <label>
+        <input type="submit" class="button" value="Login">
+    </label>
+</form>
