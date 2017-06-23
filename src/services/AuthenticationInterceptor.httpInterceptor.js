@@ -1,4 +1,4 @@
-angular.module('adminPanel.authorization').factory('UserInterceptor',[
+angular.module('adminPanel.authentication').factory('AuthenticationInterceptor',[
     '$q', '$location', 'UserService', 'FirewallService', function($q, $location, User, Firewall) {
         function redirectLogin() {
             if($location.path() !== '/login') {

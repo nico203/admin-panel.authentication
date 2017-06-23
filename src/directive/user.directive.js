@@ -1,4 +1,4 @@
-angular.module('adminPanel.authorization').directive('apUser',[
+angular.module('adminPanel.authentication').directive('apUser',[
     'AuthenticationService', '$location', function(AuthenticationService, $location) {
         return {
             restrict: 'A',

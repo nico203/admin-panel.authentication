@@ -1,4 +1,4 @@
-angular.module('adminPanel.authorization').service('FirewallService', [
+angular.module('adminPanel.authentication').service('FirewallService', [
     function() {
         var excludePaths = null;
         

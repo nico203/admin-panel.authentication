@@ -1,4 +1,4 @@
-angular.module('adminPanel.authorization').service('UserService', [
+angular.module('adminPanel.authentication').service('UserService', [
     '$localStorage', function($localStorage) {
         this.login = login;
         this.logout = logout;

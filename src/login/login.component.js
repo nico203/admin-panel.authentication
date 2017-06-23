@@ -5,7 +5,7 @@ function loginController($scope) {
     };
 }
 
-angular.module('adminPanel.authorization').component('login', {
+angular.module('adminPanel.authentication').component('login', {
     templateUrl: 'components/admin-panel/modules/authorization/login/login.template.html',
     controller: ['$scope', loginController]
 });

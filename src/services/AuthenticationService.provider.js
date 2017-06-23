@@ -1,4 +1,4 @@
-angular.module('adminPanel.authorization').provider('AuthenticationService', function() {
+angular.module('adminPanel.authentication').provider('AuthenticationService', function() {
     var excludePaths = ['/login'];
     var apiPath = null;
     var maxSessionTime = 3600;
