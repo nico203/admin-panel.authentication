@@ -1,5 +1,5 @@
 {
-  "name": "admin-panel.authorization",
+  "name": "admin-panel.authentication",
   "version": "1.0.0",
   "description": "Firewall de usuarios para web apps",
   "scripts": {
