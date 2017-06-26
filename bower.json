@@ -1,0 +1,17 @@
+{
+  "name": "admin-panel.authorization",
+  "version": "1.0.0",
+  "main": "path/to/main.css",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "angular": "1.6.x",
+    "angular-route": "1.6.x",
+    "ngstorage": "^0.3.11"
+  },
+  "devDependencies": {
+    "motion-ui": "^1.2.2"
+  }
+}

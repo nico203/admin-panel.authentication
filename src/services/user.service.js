@@ -24,7 +24,7 @@ angular.module('adminPanel.authentication').service('UserService', [
                 return $localStorage.currentUser.username;
             }
             return '';
-        };
+        }
         
         function isLogged() {
             var now = new Date().getTime();
@@ -34,14 +34,14 @@ angular.module('adminPanel.authentication').service('UserService', [
             }
             logout();
             return false;
-        };
+        }
         
         function getToken() {
             if($localStorage.currentUser) {
                 return $localStorage.currentUser.token;
             }
             return '';
-        };
+        }
         
         function setToken(token) {
             if(!$localStorage.currentUser) {
@@ -50,13 +50,13 @@ angular.module('adminPanel.authentication').service('UserService', [
             $localStorage.currentUser.token = token;
             
             return true;
-        };
+        }
         
         function isGranted(role) {
             if($localStorage.currentUser && $localStorage.currentUser.roles) {
                 return $localStorage.currentUser.roles.indexOf(role) !== -1;
             }
             return false;
-        };
+        }
     }
 ]);

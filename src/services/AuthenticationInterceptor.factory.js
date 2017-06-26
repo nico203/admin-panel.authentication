@@ -11,9 +11,9 @@ angular.module('adminPanel.authentication').factory('AuthenticationInterceptor',
                 if(Firewall.isAllowedPath($location.path())) {
                     return config;
                 }
-                if(!config.headers['Authorization']) {
+                if(!config.headers.Authorization) {
                     if(User.isLogged()) {
-                        config.headers['Authorization'] = 'Bearer ' + User.getToken();
+                        config.headers.Authorization = 'Bearer ' + User.getToken();
                     } else {
                         redirectLogin();
                     }

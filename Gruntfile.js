@@ -8,9 +8,32 @@ module.exports = function (grunt) {
                 options: {
                     install: true,
                     copy: false,
-                    targetDir: './libs',
+                    targetDir: './lib',
                     cleanTargetDir: true
                 }
+            }
+        },
+        jshint: {
+            all: ['Gruntfile.js', 'src/*.js', 'src/**/*.js']
+        },
+        html2js: {
+            dist: {
+                src: ['src/**/*.html'],
+                dest: 'tmp/templates.js'
+            }
+        },
+        concat: {
+            options: {
+                separator: ';'
+            },
+            dist: {
+                src: ['src/**/*.js', 'tmp/*.js'],
+                dest: 'dist/admin-panel.authentication.js'
+            }
+        },
+        clean: {
+            temp: {
+                src: ['tmp']
             }
         },
         uglify: {
@@ -20,6 +43,30 @@ module.exports = function (grunt) {
             build: {
                 src: 'src/<%= pkg.name %>.js',
                 dest: 'dist/<%= pkg.name %>.min.js'
+            },
+            dist: {
+                files: {
+                    'dist/admin-panel.authentication.js': ['dist/admin-panel.authentication.min.js']
+                }
+//                options: {
+//                    mangle: false
+//                }
+            }
+        },
+        watch: {
+            dev: {
+                files: ['Gruntfile.js', 'src/**/*.js', '*.html'],
+                tasks: ['jshint', 'html2js:dist', 'concat:dist', 'clean:temp'],
+                options: {
+                    atBegin: true
+                }
+            },
+            min: {
+                files: ['Gruntfile.js', 'src/**/*.js', '*.html'],
+                tasks: ['jshint', 'html2js:dist', 'concat:dist', 'clean:temp', 'uglify:dist'],
+                options: {
+                    atBegin: true
+                }
             }
         }
     });
@@ -31,5 +78,9 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-bower-task');
     
-    grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('dev', ['bower', 'connect:server', 'watch:dev']);
+    grunt.registerTask('test', ['bower', 'jshint']);
+    grunt.registerTask('minified', ['bower', 'watch:min']);
+    grunt.registerTask('package', ['bower', 'jshint', 'html2js:dist', 'concat:dist', 'uglify:dist',
+        'clean:temp']);
 };
