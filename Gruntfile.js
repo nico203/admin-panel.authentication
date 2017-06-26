@@ -28,7 +28,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: ['src/**/*.js', 'tmp/*.js'],
-                dest: 'dist/js/admin-panel.authentication.js'
+                dest: 'dist/js/<%= pkg.name %>.js'
             }
         },
         clean: {
@@ -46,11 +46,8 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'dist/js/admin-panel.authentication.min.js': ['dist/js/admin-panel.authentication.js']
+                    'dist/js/<%= pkg.name %>.min.js': ['dist/js/<%= pkg.name %>.js']
                 }
-//                options: {
-//                    mangle: false
-//                }
             }
         },
         watch: {
@@ -75,14 +72,14 @@ module.exports = function (grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    'dist/css/admin-panel.authentication.css': 'src/authentication.style.scss'
+                    'dist/css/<%= pkg.name %>.css': 'src/authentication.style.scss'
                 }
             }
         },
         cssmin: {
             dist: {
                 files: {
-                    'dist/css/admin-panel.authentication.min.css': 'dist/css/admin-panel.authentication.css'
+                    'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css'
                 }
             }
         }

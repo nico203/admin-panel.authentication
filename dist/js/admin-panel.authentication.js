@@ -1,7 +1,8 @@
 
 angular.module('adminPanel.authentication', [
     'ngStorage',
-    'ngRoute'
+    'ngRoute',
+    'adminPanel'
 ]).config(['$routeProvider', function($routeProvider) {
         $routeProvider.
             when('/login', {});

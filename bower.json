@@ -9,7 +9,8 @@
   "dependencies": {
     "angular": "1.6.x",
     "angular-route": "1.6.x",
-    "ngstorage": "^0.3.11"
+    "ngstorage": "^0.3.11",
+    "admin-panel": "nico203/admin-panel"
   },
   "devDependencies": {
     "motion-ui": "^1.2.2"
