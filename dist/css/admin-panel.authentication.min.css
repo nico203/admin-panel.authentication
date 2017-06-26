@@ -1,0 +1,1 @@
+.background{position:absolute;top:0;left:0;right:0;bottom:0;background:#fff}.background .top{height:40%}.background .bottom{height:60%;background:#000}.container{top:100px;position:relative}.container .login-form{z-index:1;max-width:400px;margin:0 auto 100px;box-shadow:0 0 20px 0 rgba(0,0,0,.2),0 5px 5px 0 rgba(0,0,0,.24)}

@@ -28,7 +28,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 src: ['src/**/*.js', 'tmp/*.js'],
-                dest: 'dist/admin-panel.authentication.js'
+                dest: 'dist/js/admin-panel.authentication.js'
             }
         },
         clean: {
@@ -46,7 +46,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'dist/admin-panel.authentication.min.js': ['dist/admin-panel.authentication.js']
+                    'dist/js/admin-panel.authentication.min.js': ['dist/js/admin-panel.authentication.js']
                 }
 //                options: {
 //                    mangle: false
@@ -68,6 +68,23 @@ module.exports = function (grunt) {
                     atBegin: true
                 }
             }
+        },
+        sass: {
+            dist: {
+                options: {
+                    style: 'expanded'
+                },
+                files: {
+                    'dist/css/admin-panel.authentication.css': 'src/authentication.style.scss'
+                }
+            }
+        },
+        cssmin: {
+            dist: {
+                files: {
+                    'dist/css/admin-panel.authentication.min.css': 'dist/css/admin-panel.authentication.css'
+                }
+            }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -77,10 +94,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-bower-task');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
     
     grunt.registerTask('dev', ['bower', 'connect:server', 'watch:dev']);
     grunt.registerTask('test', ['bower', 'jshint']);
     grunt.registerTask('minified', ['bower', 'watch:min']);
-    grunt.registerTask('package', ['bower', 'jshint', 'html2js:dist', 'concat:dist', 'uglify:dist',
-        'clean:temp']);
+    grunt.registerTask('package', ['bower', 'jshint', 'html2js:dist', 'concat:dist', 'sass:dist', 'cssmin',
+        'uglify:dist', 'clean:temp']);
 };
