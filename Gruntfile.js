@@ -46,7 +46,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'dist/admin-panel.authentication.js': ['dist/admin-panel.authentication.min.js']
+                    'dist/admin-panel.authentication.min.js': ['dist/admin-panel.authentication.js']
                 }
 //                options: {
 //                    mangle: false
