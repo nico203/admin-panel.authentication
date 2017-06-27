@@ -31,6 +31,6 @@ function loginFormController($scope, $location, AuthenticationService) {
 }
 
 angular.module('adminPanel.authentication').component('loginForm', {
-    templateUrl: 'components/admin-panel/modules/authorization/login-form/login-form.template.html',
+    templateUrl: 'login-form/login-form.template.html',
     controller: ['$scope','$location', 'AuthenticationService', loginFormController]
 });

@@ -27,7 +27,7 @@ angular.module('adminPanel.authentication', [
                     chekIfUserLogged();
                 });
             },
-            templateUrl: 'components/admin-panel/modules/authorization/directive/user.template.html'
+            templateUrl: 'directive/user.template.html'
         };
     }
 ]);;function loginFormController($scope, $location, AuthenticationService) {
@@ -63,7 +63,7 @@ angular.module('adminPanel.authentication', [
 }
 
 angular.module('adminPanel.authentication').component('loginForm', {
-    templateUrl: 'components/admin-panel/modules/authorization/login-form/login-form.template.html',
+    templateUrl: 'login-form/login-form.template.html',
     controller: ['$scope','$location', 'AuthenticationService', loginFormController]
 });;function loginController($scope) {
     
@@ -73,7 +73,7 @@ angular.module('adminPanel.authentication').component('loginForm', {
 }
 
 angular.module('adminPanel.authentication').component('login', {
-    templateUrl: 'components/admin-panel/modules/authorization/login/login.template.html',
+    templateUrl: 'login/login.template.html',
     controller: ['$scope', loginController]
 });;angular.module('adminPanel.authentication').factory('AuthenticationInterceptor',[
     '$q', '$location', 'UserService', 'FirewallService', function($q, $location, User, Firewall) {

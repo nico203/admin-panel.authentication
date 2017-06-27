@@ -17,7 +17,7 @@ angular.module('adminPanel.authentication').directive('apUser',[
                     chekIfUserLogged();
                 });
             },
-            templateUrl: 'components/admin-panel/modules/authorization/directive/user.template.html'
+            templateUrl: 'directive/user.template.html'
         };
     }
 ]);
