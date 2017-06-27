@@ -268,45 +268,11 @@ angular.module('adminPanel.authentication').component('login', {
         }
     }
 ]);
-;angular.module('templates-dist', ['directive/user.template.html', 'login-form/login-form.template.html', 'login/login.template.html']);
-
-angular.module("directive/user.template.html", []).run(["$templateCache", function ($templateCache) {
+;angular.module('adminPanel.authentication').run(['$templateCache', function ($templateCache) {
   $templateCache.put("directive/user.template.html",
-    "<div ng-if=\"!user\">\n" +
-    "    <login></login>\n" +
-    "</div>\n" +
-    "<div ng-if=\"user\" ng-transclude></div>");
-}]);
-
-angular.module("login-form/login-form.template.html", []).run(["$templateCache", function ($templateCache) {
+    "<div ng-if=!user><login></login></div><div ng-if=user ng-transclude></div>");
   $templateCache.put("login-form/login-form.template.html",
-    "<form name=\"form\" ng-submit=\"submit()\" data-abide novalidate>\n" +
-    "    <div ng-if=\"error\" class=\"alert callout\">\n" +
-    "        <p><i class=\"fa fa-warning\"></i><span ng-bind=\"error\"></span></p>\n" +
-    "    </div>\n" +
-    "    <label>Usuario\n" +
-    "        <input name=\"username\" type=\"text\" ng-model=\"username\" required>\n" +
-    "        <span class=\"form-error\">El usuario es requerido</span>\n" +
-    "    </label>\n" +
-    "    <label>Contraseña\n" +
-    "        <input name=\"password\" type=\"password\" ng-model=\"password\" required>\n" +
-    "        <span class=\"form-error\">La contraseña es requerida</span>\n" +
-    "    </label>\n" +
-    "    <label>\n" +
-    "        <input type=\"submit\" class=\"button\" value=\"Login\">\n" +
-    "    </label>\n" +
-    "</form>");
-}]);
-
-angular.module("login/login.template.html", []).run(["$templateCache", function ($templateCache) {
+    "<form name=form ng-submit=submit() data-abide novalidate><div ng-if=error class=\"alert callout\"><p><i class=\"fa fa-warning\"></i><span ng-bind=error></span></p></div><label>Usuario <input name=username ng-model=username required> <span class=form-error>El usuario es requerido</span></label><label>Contraseña <input name=password type=password ng-model=password required> <span class=form-error>La contraseña es requerida</span></label><label><input type=submit class=button value=Login></label></form>");
   $templateCache.put("login/login.template.html",
-    "<div class=\"background\">\n" +
-    "    <div class=\"top\"></div>\n" +
-    "    <div class=\"bottom\"></div>\n" +
-    "</div>\n" +
-    "<div class=\"container\">\n" +
-    "    <ap-box class=\"login-form\" title=\"Login\" init=\"init()\">\n" +
-    "        <login-form></login-form>\n" +
-    "    </ap-box>\n" +
-    "</div>");
+    "<div class=background><div class=top></div><div class=bottom></div></div><div class=container><ap-box class=login-form title=Login init=init()><login-form></login-form></ap-box></div>");
 }]);
