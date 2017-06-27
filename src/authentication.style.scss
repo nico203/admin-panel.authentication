@@ -1,4 +1,4 @@
-$admin-background: black;
-$primary-color: white;
+$admin-background: black !default;
+$primary-color: white !default;
 
 @import 'login/login.style';
