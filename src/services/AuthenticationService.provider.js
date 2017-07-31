@@ -2,6 +2,7 @@ angular.module('adminPanel.authentication').provider('AuthenticationService', fu
     var excludePaths = ['/login'];
     var apiPath = null;
     var maxSessionTime = 3600;
+    var debugMode = false;
 
     this.setApiPath = function(path) {
         if(!(path instanceof String) && typeof(path) !== 'string') {
@@ -13,7 +14,7 @@ angular.module('adminPanel.authentication').provider('AuthenticationService', fu
     };
     this.excludePaths = function(paths) {
         if(!(paths instanceof Array)) {
-            throw 'The paths must be an Array of Strings';
+            throw 'The paths must be an Array of Regex';
         }
         excludePaths = paths;
         
@@ -27,7 +28,10 @@ angular.module('adminPanel.authentication').provider('AuthenticationService', fu
         
         return this;
     };
-
+    this.enableDebugMode = function () {
+        debugMode = true;
+    };
+    
 
     this.$get = [
         '$http', 'UserService', 'FirewallService',
@@ -36,7 +40,11 @@ angular.module('adminPanel.authentication').provider('AuthenticationService', fu
                 throw 'The path must be initialized.';
             }
             
-            Firewall.setExcludePaths(excludePaths);
+            if(debugMode) {
+                Firewall.setExcludePaths([/^./]);
+            } else {
+                Firewall.setExcludePaths(excludePaths);
+            }
             
             return {
                 login: Login,

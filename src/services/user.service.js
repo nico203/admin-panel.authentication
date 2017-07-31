@@ -1,9 +1,11 @@
 angular.module('adminPanel.authentication').service('UserService', [
     '$localStorage', function($localStorage) {
+        var logged = false;
         this.login = login;
         this.logout = logout;
         this.getUsername = getUsername;
         this.isLogged = isLogged;
+        this.setLogged = setLogged;
         this.getToken = getToken;
         this.setToken = setToken;
         this.isGranted = isGranted;
@@ -24,6 +26,10 @@ angular.module('adminPanel.authentication').service('UserService', [
                 return $localStorage.currentUser.username;
             }
             return '';
+        }
+        
+        function setLogged(val) {
+            logged = val;
         }
         
         function isLogged() {

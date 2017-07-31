@@ -85,7 +85,9 @@ angular.module('adminPanel.authentication').component('login', {
         
         return {
             request: function(config) {
+                User.setLogged(null);
                 if(Firewall.isAllowedPath($location.path())) {
+                    User.setLogged(true);
                     return config;
                 }
                 if(!config.headers.Authorization) {
@@ -111,6 +113,7 @@ angular.module('adminPanel.authentication').component('login', {
     var excludePaths = ['/login'];
     var apiPath = null;
     var maxSessionTime = 3600;
+    var debugMode = false;
 
     this.setApiPath = function(path) {
         if(!(path instanceof String) && typeof(path) !== 'string') {
@@ -122,7 +125,7 @@ angular.module('adminPanel.authentication').component('login', {
     };
     this.excludePaths = function(paths) {
         if(!(paths instanceof Array)) {
-            throw 'The paths must be an Array of Strings';
+            throw 'The paths must be an Array of Regex';
         }
         excludePaths = paths;
         
@@ -136,7 +139,10 @@ angular.module('adminPanel.authentication').component('login', {
         
         return this;
     };
-
+    this.enableDebugMode = function () {
+        debugMode = true;
+    };
+    
 
     this.$get = [
         '$http', 'UserService', 'FirewallService',
@@ -145,7 +151,11 @@ angular.module('adminPanel.authentication').component('login', {
                 throw 'The path must be initialized.';
             }
             
-            Firewall.setExcludePaths(excludePaths);
+            if(debugMode) {
+                Firewall.setExcludePaths([/^./]);
+            } else {
+                Firewall.setExcludePaths(excludePaths);
+            }
             
             return {
                 login: Login,
@@ -217,10 +227,12 @@ angular.module('adminPanel.authentication').component('login', {
 ]);
 ;angular.module('adminPanel.authentication').service('UserService', [
     '$localStorage', function($localStorage) {
+        var logged = false;
         this.login = login;
         this.logout = logout;
         this.getUsername = getUsername;
         this.isLogged = isLogged;
+        this.setLogged = setLogged;
         this.getToken = getToken;
         this.setToken = setToken;
         this.isGranted = isGranted;
@@ -241,6 +253,10 @@ angular.module('adminPanel.authentication').component('login', {
                 return $localStorage.currentUser.username;
             }
             return '';
+        }
+        
+        function setLogged(val) {
+            logged = val;
         }
         
         function isLogged() {
