@@ -33,6 +33,7 @@ angular.module('adminPanel.authentication').service('UserService', [
         }
         
         function isLogged() {
+            if(logged === true) return true;
             var now = new Date().getTime();
             if($localStorage.currentUser && 
                     now - $localStorage.currentUser.timestamp < $localStorage.currentUser.maxSessionTime * 1000) {
