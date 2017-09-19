@@ -16,8 +16,12 @@ angular.module('adminPanel.authentication').service('FirewallService', [
         };
         
         this.isAllowedPath = function (path) {
+            console.log('excludePaths',excludePaths);
+            console.log('path',path);
             if(excludePaths !== null) {
-                return checkPaths(path);
+                var ret = checkPaths(path);
+                console.log(ret);
+                return ret;
             }
             return false;
         };
