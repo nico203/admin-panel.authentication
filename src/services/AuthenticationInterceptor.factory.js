@@ -10,7 +10,6 @@ angular.module('adminPanel.authentication').factory('AuthenticationInterceptor',
             request: function(config) {
                 User.setLogged(null);
                 var isAllowedPath = Firewall.isAllowedPath($location.path());
-                console.log('isAllowedPath',isAllowedPath);
                 if(isAllowedPath) {
                     User.setLogged(true);
                     return config;

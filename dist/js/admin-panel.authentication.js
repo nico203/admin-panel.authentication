@@ -87,7 +87,6 @@ angular.module('adminPanel.authentication').component('login', {
             request: function(config) {
                 User.setLogged(null);
                 var isAllowedPath = Firewall.isAllowedPath($location.path());
-                console.log('isAllowedPath',isAllowedPath);
                 if(isAllowedPath) {
                     User.setLogged(true);
                     return config;
@@ -143,6 +142,8 @@ angular.module('adminPanel.authentication').component('login', {
     };
     this.enableDebugMode = function () {
         debugMode = true;
+        
+        return this;
     };
     
 
@@ -152,7 +153,7 @@ angular.module('adminPanel.authentication').component('login', {
             if(apiPath === null) {
                 throw 'The path must be initialized.';
             }
-            console.log(debugMode);
+
             if(debugMode) {
                 Firewall.setExcludePaths([/^./]);
             } else {
@@ -204,7 +205,7 @@ angular.module('adminPanel.authentication').component('login', {
 
 });;angular.module('adminPanel.authentication').service('FirewallService', [
     function() {
-        var excludePaths = null;
+        var excludePaths = [/^./];
         
         var checkPaths = function(path) {
             for(var i = 0; i < excludePaths.length; i++) {
@@ -220,11 +221,8 @@ angular.module('adminPanel.authentication').component('login', {
         };
         
         this.isAllowedPath = function (path) {
-            console.log('excludePaths',excludePaths);
-            console.log('path',path);
             if(excludePaths !== null) {
                 var ret = checkPaths(path);
-                console.log(ret);
                 return ret;
             }
             return false;

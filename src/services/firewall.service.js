@@ -1,6 +1,7 @@
 angular.module('adminPanel.authentication').service('FirewallService', [
     function() {
-        var excludePaths = null;
+        //Por defecto estan habilitadas todas las rutas.
+        var excludePaths = [/^./];
         
         var checkPaths = function(path) {
             for(var i = 0; i < excludePaths.length; i++) {
@@ -16,11 +17,8 @@ angular.module('adminPanel.authentication').service('FirewallService', [
         };
         
         this.isAllowedPath = function (path) {
-            console.log('excludePaths',excludePaths);
-            console.log('path',path);
             if(excludePaths !== null) {
                 var ret = checkPaths(path);
-                console.log(ret);
                 return ret;
             }
             return false;

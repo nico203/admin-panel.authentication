@@ -30,6 +30,8 @@ angular.module('adminPanel.authentication').provider('AuthenticationService', fu
     };
     this.enableDebugMode = function () {
         debugMode = true;
+        
+        return this;
     };
     
 
@@ -39,7 +41,7 @@ angular.module('adminPanel.authentication').provider('AuthenticationService', fu
             if(apiPath === null) {
                 throw 'The path must be initialized.';
             }
-            console.log(debugMode);
+
             if(debugMode) {
                 Firewall.setExcludePaths([/^./]);
             } else {
