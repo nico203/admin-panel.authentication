@@ -205,6 +205,7 @@ angular.module('adminPanel.authentication').component('login', {
 
 });;angular.module('adminPanel.authentication').service('FirewallService', [
     function() {
+        //Por defecto estan habilitadas todas las rutas.
         var excludePaths = [/^./];
         
         var checkPaths = function(path) {
@@ -302,7 +303,7 @@ angular.module('adminPanel.authentication').component('login', {
   $templateCache.put("directive/user.template.html",
     "<div ng-if=!user><login></login></div><div ng-if=user ng-transclude></div>");
   $templateCache.put("login-form/login-form.template.html",
-    "<form name=form ng-submit=submit() data-abide novalidate><div ng-if=error class=\"alert callout\"><p><i class=\"fa fa-warning\"></i><span ng-bind=error></span></p></div><label>Usuario <input name=username type=text ng-model=username required><span class=form-error>El usuario es requerido</span></label><label>Contraseña <input name=password type=password ng-model=password required><span class=form-error>La contraseña es requerida</span></label><label><input type=submit class=button value=Login></label></form>");
+    "<form name=form ng-submit=submit() data-abide novalidate><div ng-if=error class=\"alert callout\"><p><i class=\"fa fa-warning\"></i><span ng-bind=error></span></p></div><label>Usuario<div class=input-group><span class=input-group-label><i class=\"fa fa-user-o\" aria-hidden=true></i></span><input class=input-group-field name=username type=text ng-model=username required></div><span class=form-error>El usuario es requerido</span></label><label>Contraseña<div class=input-group><span class=input-group-label><i class=\"fa fa-lock\" aria-hidden=true></i></span><input class=input-group-field name=password type=password ng-model=password required></div><span class=form-error>La contraseña es requerida</span></label><div class=row><input type=submit class=button value=Ingresar></div></form>");
   $templateCache.put("login/login.template.html",
-    "<div class=background><div class=top></div><div class=bottom></div></div><div class=container><ap-box class=login-form title=Login init=init()><login-form></login-form></ap-box></div>");
+    "<div class=container><ap-box class=login-form title=Login init=init()><login-form></login-form></ap-box></div>");
 }]);

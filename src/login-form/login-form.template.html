@@ -3,14 +3,24 @@
         <p><i class="fa fa-warning"></i><span ng-bind="error"></span></p>
     </div>
     <label>Usuario
-        <input name="username" type="text" ng-model="username" required>
+        <div class="input-group">
+            <span class="input-group-label">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+            </span>
+            <input class="input-group-field" name="username" type="text" ng-model="username" required>
+        </div>
         <span class="form-error">El usuario es requerido</span>
     </label>
     <label>Contraseña
-        <input name="password" type="password" ng-model="password" required>
+        <div class="input-group">
+            <span class="input-group-label">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+            <input class="input-group-field" name="password" type="password" ng-model="password" required>
+        </div>
         <span class="form-error">La contraseña es requerida</span>
     </label>
-    <label>
-        <input type="submit" class="button" value="Login">
-    </label>
+    <div class="row">
+        <input type="submit" class="button" value="Ingresar">
+    </div>
 </form>

@@ -69,7 +69,7 @@ module.exports = function (grunt) {
         },
         watch: {
             dev: {
-                files: ['Gruntfile.js', 'src/**/*.js', '*.html'],
+                files: ['Gruntfile.js', 'src/**/*.js', 'src/**/*.html'],
                 tasks: ['jshint', 'html2js:dist', 'concat:dist', 'clean:temp'],
                 options: {
                     atBegin: true
